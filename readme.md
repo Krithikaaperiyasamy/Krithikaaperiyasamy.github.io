@@ -7,6 +7,10 @@ A small static webpage project.
 - `play.html`: demo/experimental page
 - `readme.md`: this file
 
+## Navigation
+- Games - Memory Game and other games
+- Blog - Links to https://krithikaa.btw.so/
+
 ## Usage
 - Open [index.html](index.html) in your browser to view the site.
 - For local development run a static server, for example:
