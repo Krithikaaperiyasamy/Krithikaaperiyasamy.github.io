@@ -227,11 +227,13 @@
         }
 
         function updateDifficulty() {
-            // Gradual speed increase: starts at 4, increases by 0.005 per frame (slower increase)
-            letterSpeed = 4 + (gameTime * 0.005);
+            // Gradual speed increase: starts at 2, increases by 0.005 per frame (slower increase)
+            letterSpeed = 2 + (gameTime * 0.005);
             
-            // Additional speed increase based on score: +0.03 for every 50 points (gentler increase)
-            letterSpeed += (Math.floor(score / 50) * 0.03);
+            // Additional speed increase based on score: only after 150 points
+            if (score >= 150) {
+                letterSpeed += (Math.floor((score - 150) / 50) * 0.03);
+            }
             
             // Spawn rate decreases (letters spawn more frequently): starts at 80, decreases over time
             spawnRate = Math.max(30, 80 - (gameTime * 0.3));
