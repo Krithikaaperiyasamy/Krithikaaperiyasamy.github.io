@@ -230,6 +230,9 @@
             // Gradual speed increase: starts at 2, increases by 0.01 per frame
             letterSpeed = 2 + (gameTime * 0.01);
             
+            // Additional speed increase based on score: +0.05 for every 50 points
+            letterSpeed += (Math.floor(score / 50) * 0.05);
+            
             // Spawn rate decreases (letters spawn more frequently): starts at 80, decreases over time
             spawnRate = Math.max(30, 80 - (gameTime * 0.3));
             
