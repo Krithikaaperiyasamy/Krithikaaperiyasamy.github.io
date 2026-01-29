@@ -8,8 +8,8 @@ A small static webpage project.
 - `readme.md`: this file
 
 ## Navigation
-- Games
-- Blog
+- Games - Memory Game and other games
+- Blog - Links to https://krithikaa.btw.so/
 
 ## Usage
 - Open [index.html](index.html) in your browser to view the site.
