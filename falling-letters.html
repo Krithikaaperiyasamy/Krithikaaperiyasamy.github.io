@@ -227,14 +227,21 @@
         }
 
         function updateDifficulty() {
-            if (gameTime > 60) {
-                letterSpeed = 4;
-                spawnRate = 50;
+            // Gradual speed increase: starts at 2, increases by 0.01 per frame
+            letterSpeed = 2 + (gameTime * 0.01);
+            
+            // Spawn rate decreases (letters spawn more frequently): starts at 80, decreases over time
+            spawnRate = Math.max(30, 80 - (gameTime * 0.3));
+            
+            // Update difficulty label
+            if (gameTime > 120) {
+                difficultyDisplay.textContent = 'Insane';
+            } else if (gameTime > 60) {
                 difficultyDisplay.textContent = 'Hard';
             } else if (gameTime > 30) {
-                letterSpeed = 3;
-                spawnRate = 65;
                 difficultyDisplay.textContent = 'Medium';
+            } else {
+                difficultyDisplay.textContent = 'Easy';
             }
         }
 
