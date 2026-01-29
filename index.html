@@ -1,3 +1,84 @@
+<nav>
+    <ul>
+        <li>
+            <a href="#">Games</a>
+            <ul>
+                <li><a href="play.html">Memory Game</a></li>
+            </ul>
+        </li>
+    </ul>
+</nav>
+
+<style>
+    nav {
+        background: transparent;
+        box-shadow: none;
+        position: fixed;
+        top: 10px;
+        right: 20px;
+        z-index: 50;
+    }
+
+    nav ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        height: 56px;
+        width: auto;
+    }
+
+    nav ul li {
+        position: relative;
+        margin-right: 8px;
+    }
+
+    nav ul li a {
+        display: block;
+        color: #203040;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-weight: 600;
+    }
+
+    nav ul li a:hover {
+        background: rgba(0,0,0,0.06);
+        border-radius: 6px;
+    }
+
+    nav ul li ul {
+        display: none;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background: rgba(255,255,255,0.95);
+        min-width: 180px;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+        border-radius: 6px;
+        padding: 6px 0;
+    }
+
+    nav ul li ul li {
+        float: none;
+    }
+
+    nav ul li ul li a {
+        color: #203040;
+        padding: 10px 16px;
+        text-align: left;
+    }
+
+    nav ul li ul li a:hover {
+        background: rgba(0,0,0,0.04);
+    }
+
+    nav ul li:hover ul {
+        display: block;
+    }
+</style>
 <!DOCTYPE html>
 <html lang="en">
 <head>
