@@ -1,0 +1,197 @@
+:root {
+    --bg-color: #12141c;
+    --card-bg: rgba(26, 29, 41, 0.7);
+    --text-main: #e2d4b7;
+    --text-muted: #949aa7;
+    --accent-gold: #cfa851;
+    --glow-color: rgba(207, 168, 81, 0.15);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color);
+    background-image: 
+        radial-gradient(circle at 80% 20%, rgba(207, 168, 81, 0.04) 0%, transparent 50%),
+        radial-gradient(circle at 10% 80%, rgba(102, 126, 234, 0.03) 0%, transparent 40%);
+    color: var(--text-main);
+    min-height: 100vh;
+    font-family: 'Cinzel', 'Didot', 'Georgia', serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow-x: hidden;
+    position: relative;
+    padding: 40px 20px;
+    box-sizing: border-box;
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(207, 168, 81, 0.15) 1px, transparent 1px);
+    background-size: 40px 40px;
+    mask-image: radial-gradient(circle at center, black, transparent 80%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+nav {
+    position: fixed;
+    top: 20px;
+    right: 30px;
+    z-index: 50;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 24px;
+}
+
+nav a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 14px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: var(--accent-gold);
+}
+
+.container {
+    text-align: center;
+    z-index: 10;
+    background: var(--card-bg);
+    padding: 40px 50px;
+    border-radius: 12px;
+    border: 1px solid rgba(207, 168, 81, 0.2);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    max-width: 550px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.crest-icon {
+    font-size: 36px;
+    color: var(--accent-gold);
+    animation: float 4s ease-in-out infinite;
+}
+
+h1 {
+    font-size: 14px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin: 15px 0 5px 0;
+    font-weight: 400;
+}
+
+.name {
+    font-size: 42px;
+    font-weight: 700;
+    color: var(--accent-gold);
+    margin: 0 0 20px 0;
+    letter-spacing: 0.05em;
+}
+
+.divider {
+    height: 1px;
+    width: 120px;
+    background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+    margin: 0 auto 25px auto;
+    position: relative;
+}
+
+.mood-section {
+    margin-top: 20px;
+}
+
+label {
+    display: block;
+    font-size: 13px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+}
+
+.magic-select {
+    background: #191d29;
+    color: var(--text-main);
+    border: 1px solid rgba(207, 168, 81, 0.3);
+    padding: 12px 20px;
+    font-size: 15px;
+    border-radius: 4px;
+    width: 100%;
+    max-width: 320px;
+    font-family: inherit;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.magic-select:focus {
+    border-color: var(--accent-gold);
+    box-shadow: 0 0 15px var(--glow-color);
+}
+
+.player-container {
+    margin-top: 30px;
+    display: none;
+    animation: fadeIn 0.6s ease forwards;
+}
+
+.player-title {
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    color: var(--accent-gold);
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+iframe {
+    border-radius: 8px;
+    border: 1px solid rgba(207, 168, 81, 0.2);
+    background: #000;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.wand-light {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    background: radial-gradient(circle, rgba(207,168,81,0.07) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+}
+/* Ensures the injected component container displays cleanly */
+#music-widget-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
