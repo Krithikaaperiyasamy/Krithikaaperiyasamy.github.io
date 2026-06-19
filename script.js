@@ -6,9 +6,11 @@ window.addEventListener('mousemove', (e) => {
 });
 
 // Dynamic Component Injector: Automatically loads music.html layout
+// Change ONLY this block inside your script.js file:
 async function loadMusicWidget() {
     try {
-        const response = await fetch('music.html');
+        // Adding './' forces GitHub Pages to look right inside your repository folder
+        const response = await fetch('./music.html'); 
         if (response.ok) {
             const htmlContent = await response.text();
             document.getElementById('music-widget-container').innerHTML = htmlContent;
@@ -19,6 +21,7 @@ async function loadMusicWidget() {
         console.error('Error fetching component:', error);
     }
 }
+
 
 // Fire off layout loading immediately on startup
 loadMusicWidget();
