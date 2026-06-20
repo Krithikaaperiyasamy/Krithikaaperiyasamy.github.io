@@ -12,12 +12,16 @@ window.addEventListener('mousemove', (e) => {
 // 🎩 2. Sorting Hat Evaluation Engine
 // ==========================================
 function answerQuestion(house) {
-    const optionsContainer = document.getElementById('optionsContainer');
-    const quizQuestion = document.getElementById('quizQuestion');
-    const resultDisplay = document.getElementById('resultDisplay');
-    const houseName = document.getElementById('houseName');
+    // Robust querySelector fallback: tries lowercase and camelCase variations
+    const optionsContainer = document.getElementById('optionsContainer') || document.getElementById('optionscontainer');
+    const quizQuestion = document.getElementById('quizQuestion') || document.getElementById('quizquestion');
+    const resultDisplay = document.getElementById('resultDisplay') || document.getElementById('resultdisplay');
+    const houseName = document.getElementById('houseName') || document.getElementById('housename');
 
-    if (!optionsContainer || !quizQuestion || !resultDisplay || !houseName) return;
+    if (!optionsContainer || !quizQuestion || !resultDisplay || !houseName) {
+        console.error("Sorting elements not found in the DOM.");
+        return;
+    }
 
     // Hide the question buttons smoothly
     optionsContainer.style.display = 'none';
@@ -59,22 +63,28 @@ function flashBackground(color) {
 // ==========================================
 async function loadSortingWidget() {
     try {
-        // FIXED LINE: Points to your new sorting.html filename
+        // Points to your new sorting.html filename
         const response = await fetch('./sorting.html'); 
         if (response.ok) {
             const htmlContent = await response.text();
             
             // Inject the elements into the main layout target
-            document.getElementById('music-widget-container').innerHTML = htmlContent;
+            const container = document.getElementById('music-widget-container');
+            if (container) {
+                container.innerHTML = htmlContent;
+            } else {
+                console.error("Target container 'music-widget-container' not found in index.html");
+                return;
+            }
             
             // Ensure the result screen stays hidden on first load
-            const resultDisplay = document.getElementById('resultDisplay');
+            const resultDisplay = document.getElementById('resultDisplay') || document.getElementById('resultdisplay');
             if (resultDisplay) {
                 resultDisplay.style.display = 'none';
             }
 
         } else {
-            console.error('Failed to load sorting hat widget architecture');
+            console.error('Failed to load sorting hat widget architecture. Server status:', response.status);
         }
     } catch (error) {
         console.error('Error fetching component:', error);
@@ -83,3 +93,4 @@ async function loadSortingWidget() {
 
 // Fire off layout loading immediately on startup
 loadSortingWidget();
+

@@ -1,29 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Sorting Hat</title>
-    <!-- This links directly to your existing Harry Potter CSS -->
-    <link rel="stylesheet" href="style.css"> 
-</head>
-<body>
-    <div class="hp-container">
-        <h1>⚡ THE SORTING HAT ⚡</h1>
-        <p id="quiz-question">Which trait do you value the most?</p>
-        
-        <div class="options-container">
-            <button class="magic-btn" onclick="answerQuestion('Gryffindor')">🦁 Bravery & Courage</button>
-            <button class="magic-btn" onclick="answerQuestion('Slytherin')">🐍 Ambition & Pride</button>
-            <button class="magic-btn" onclick="answerQuestion('Ravenclaw')">🦅 Wit & Wisdom</button>
-            <button class="magic-btn" onclick="answerQuestion('Hufflepuff')">🦡 Loyalty & Fair Play</button>
-        </div>
-
-        <div id="result-display" style="display: none; margin-top: 30px;">
-            <h2>You belong in... <span id="house-name"></span>!</h2>
-        </div>
+<div class="sorting-hat-box">
+    <h2 id="quizQuestion">🔮 The Sorting Hat Awaits...</h2>
+    <p>Which defining house trait resonates deepest with your magical soul?</p>
+    
+    <div id="optionsContainer" style="display: flex; flex-direction: column; gap: 10px; margin-top: 15px;">
+        <button class="magic-btn" onclick="answerQuestion('Gryffindor')" style="cursor:pointer; padding: 10px;">🦁 Bravery & Daring</button>
+        <button class="magic-btn" onclick="answerQuestion('Slytherin')" style="cursor:pointer; padding: 10px;">🐍 Ambition & Cunning</button>
+        <button class="magic-btn" onclick="answerQuestion('Ravenclaw')" style="cursor:pointer; padding: 10px;">🦅 Wit & Learning</button>
+        <button class="magic-btn" onclick="answerQuestion('Hufflepuff')" style="cursor:pointer; padding: 10px;">🦡 Patience & Loyalty</button>
     </div>
 
-    <script src="script.js"></script>
-</body>
-</html>
+    <div id="resultDisplay" style="display: none; margin-top: 20px; font-weight: bold; font-size: 1.5rem;">
+        ⚡ Better be... <span id="houseName"></span>!
+    </div>
+</div>
+
