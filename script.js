@@ -59,8 +59,8 @@ function flashBackground(color) {
 // ==========================================
 async function loadSortingWidget() {
     try {
-        // Fetches your template file
-        const response = await fetch('./music.html'); 
+        // FIXED LINE: Points to your new sorting.html filename
+        const response = await fetch('./sorting.html'); 
         if (response.ok) {
             const htmlContent = await response.text();
             
