@@ -4,58 +4,62 @@
 const wand = document.getElementById('wand');
 window.addEventListener('mousemove', (e) => {
     if (wand) {
-        wand.style.left = e.clientX + 'px';
-        wand.style.top = e.clientY + 'px';
+        wand.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
     }
 });
 
 // ==========================================
-// 📚 2. Song Mapping Engine Database
+// 🎩 2. Sorting Hat Evaluation Engine
 // ==========================================
-const spellBook = {
-    focus: {
-        spell: "Casting: *Intellectus Aura*",
-        embedUrl: "https://open.spotify.com/track/6potEImiklXkwD9qFzpu15?si=d9d5fab4a7d04400"
-    },
-    moody: {
-        spell: "Casting: *Nebula Lacrimas*",
-        embedUrl: "https://open.spotify.com/track/1ZPeaPDjQOOC8hw1mNjyjF?si=55a6dcc2e1ce4482"
-    },
-    intense: {
-        spell: "Casting: *Secreto Revelio*",
-        embedUrl: "https://open.spotify.com/track/65oYMPSutgoUYRVA1OgM9a?si=c57fe7d737cd428"
-    },
-    chill: {
-        spell: "Casting: *Ignis Consuelo*",
-        embedUrl: "https://open.spotify.com/track/0eFMbKCRw8KByXyWBw8WO7?si=0feb241e0f44425"
-    }
-};
+function answerQuestion(house) {
+    const optionsContainer = document.getElementById('optionsContainer');
+    const quizQuestion = document.getElementById('quizQuestion');
+    const resultDisplay = document.getElementById('resultDisplay');
+    const houseName = document.getElementById('houseName');
 
-// ==========================================
-// 🛠️ 3. Selection Event Execution Handler
-// ==========================================
-function summonSong() {
-    const selector = document.getElementById('moodSelect');
-    const container = document.getElementById('playerContainer');
-    const label = document.getElementById('spellCast');
-    const iframe = document.getElementById('musicFrame');
+    if (!optionsContainer || !quizQuestion || !resultDisplay || !houseName) return;
 
-    if (!selector || !container || !label || !iframe) return;
+    // Hide the question buttons smoothly
+    optionsContainer.style.display = 'none';
+    quizQuestion.innerText = "The Sorting Hat has evaluated your soul...";
 
-    const selectedValue = selector.value;
+    // Display the sorted Hogwarts house
+    houseName.innerText = house;
+    resultDisplay.style.display = 'block';
 
-    if (spellBook[selectedValue]) {
-        label.innerText = spellBook[selectedValue].spell;
-        iframe.src = spellBook[selectedValue].embedUrl;
-        container.style.display = 'block';
+    // Magical effect: Temporary background flash matching House Colors
+    if (house === 'Gryffindor') {
+        flashBackground('#740001'); // Scarlet
+        houseName.style.color = '#FFD700'; // Gold
+    } else if (house === 'Slytherin') {
+        flashBackground('#1A472A'); // Emerald Green
+        houseName.style.color = '#AAAAAA'; // Silver
+    } else if (house === 'Ravenclaw') {
+        flashBackground('#0E1A40'); // Midnight Blue
+        houseName.style.color = '#946B2D'; // Bronze
+    } else if (house === 'Hufflepuff') {
+        flashBackground('#EEB011'); // Yellow
+        houseName.style.color = '#000000'; // Black
     }
 }
 
+function flashBackground(color) {
+    const originalBg = document.body.style.backgroundColor;
+    document.body.style.transition = "background-color 0.5s ease";
+    document.body.style.backgroundColor = color;
+    
+    // Smoothly blend back to your original website theme color after 2 seconds
+    setTimeout(() => {
+        document.body.style.backgroundColor = originalBg;
+    }, 2000);
+}
+
 // ==========================================
-// ⚙️ 4. Dynamic Component Layout Injector
+// ⚙️ 3. Dynamic Component Layout Injector
 // ==========================================
-async function loadMusicWidget() {
+async function loadSortingWidget() {
     try {
+        // Fetches your template file
         const response = await fetch('./music.html'); 
         if (response.ok) {
             const htmlContent = await response.text();
@@ -63,20 +67,14 @@ async function loadMusicWidget() {
             // Inject the elements into the main layout target
             document.getElementById('music-widget-container').innerHTML = htmlContent;
             
-            // Keep player hidden until an option is selected
-            const container = document.getElementById('playerContainer');
-            if (container) {
-                container.style.display = 'none';
-            }
-
-            // Secure the change listener event to the newly rendered dropdown list
-            const selector = document.getElementById('moodSelect');
-            if (selector) {
-                selector.addEventListener('change', summonSong);
+            // Ensure the result screen stays hidden on first load
+            const resultDisplay = document.getElementById('resultDisplay');
+            if (resultDisplay) {
+                resultDisplay.style.display = 'none';
             }
 
         } else {
-            console.error('Failed to load music widget architecture');
+            console.error('Failed to load sorting hat widget architecture');
         }
     } catch (error) {
         console.error('Error fetching component:', error);
@@ -84,4 +82,4 @@ async function loadMusicWidget() {
 }
 
 // Fire off layout loading immediately on startup
-loadMusicWidget();
+loadSortingWidget();
