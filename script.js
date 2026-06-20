@@ -4,57 +4,168 @@
 const wand = document.getElementById('wand');
 window.addEventListener('mousemove', (e) => {
     if (wand) {
-        wand.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+        wand.style.left = `${e.clientX}px`;
+        wand.style.top = `${e.clientY}px`;
     }
 });
 
 // ==========================================
 // 🎩 2. Sorting Hat Evaluation Engine
 // ==========================================
-function answerQuestion(house) {
-    // Robust querySelector fallback: tries lowercase and camelCase variations
-    const optionsContainer = document.getElementById('optionsContainer') || document.getElementById('optionscontainer');
-    const quizQuestion = document.getElementById('quizQuestion') || document.getElementById('quizquestion');
-    const resultDisplay = document.getElementById('resultDisplay') || document.getElementById('resultdisplay');
-    const houseName = document.getElementById('houseName') || document.getElementById('housename');
+const sortingQuestions = [
+    {
+        prompt: 'What quality would you trust most in yourself?',
+        options: [
+            { label: 'Courage to take the lead', house: 'Gryffindor' },
+            { label: 'Ambition to outsmart the game', house: 'Slytherin' },
+            { label: 'Curiosity for deep knowledge', house: 'Ravenclaw' },
+            { label: 'Kindness and steady loyalty', house: 'Hufflepuff' }
+        ]
+    },
+    {
+        prompt: 'Which activity feels most like your spirit?',
+        options: [
+            { label: 'Braving a daring adventure', house: 'Gryffindor' },
+            { label: 'Crafting a clever plan', house: 'Slytherin' },
+            { label: 'Reading by candlelight', house: 'Ravenclaw' },
+            { label: 'Helping a friend in need', house: 'Hufflepuff' }
+        ]
+    },
+    {
+        prompt: 'Your ideal companion is...',
+        options: [
+            { label: 'A loyal gryphon', house: 'Gryffindor' },
+            { label: 'A mysterious serpent', house: 'Slytherin' },
+            { label: 'A wise raven', house: 'Ravenclaw' },
+            { label: 'A patient badger', house: 'Hufflepuff' }
+        ]
+    }
+];
 
-    if (!optionsContainer || !quizQuestion || !resultDisplay || !houseName) {
-        console.error("Sorting elements not found in the DOM.");
+const houseDescriptions = {
+    Gryffindor: 'Brave, daring, and bold — you lead with heart and accept every challenge with courage.',
+    Slytherin: 'Ambitious, cunning, and resourceful — you seek power and clever solutions to every problem.',
+    Ravenclaw: 'Wise, curious, and creative — you cherish knowledge and celebrate intellectual flair.',
+    Hufflepuff: 'Loyal, patient, and kind — you build strength from teamwork and quiet determination.'
+};
+
+let currentQuestionIndex = 0;
+let houseScores = {
+    Gryffindor: 0,
+    Slytherin: 0,
+    Ravenclaw: 0,
+    Hufflepuff: 0
+};
+
+function renderCurrentQuestion() {
+    const quizQuestion = document.getElementById('quizQuestion');
+    const questionPrompt = document.getElementById('questionPrompt');
+    const optionsContainer = document.getElementById('optionsContainer');
+    const progressText = document.getElementById('progressText');
+    const resultDisplay = document.getElementById('resultDisplay');
+
+    if (!quizQuestion || !questionPrompt || !optionsContainer || !progressText || !resultDisplay) {
         return;
     }
 
-    // Hide the question buttons smoothly
-    optionsContainer.style.display = 'none';
-    quizQuestion.innerText = "The Sorting Hat has evaluated your soul...";
+    resultDisplay.style.display = 'none';
+    optionsContainer.innerHTML = '';
+    const question = sortingQuestions[currentQuestionIndex];
 
-    // Display the sorted Hogwarts house
-    houseName.innerText = house;
-    resultDisplay.style.display = 'block';
+    quizQuestion.innerText = 'Sorting Hat Question';
+    questionPrompt.innerText = question.prompt;
+    progressText.innerText = `Question ${currentQuestionIndex + 1} of ${sortingQuestions.length}`;
 
-    // Magical effect: Temporary background flash matching House Colors
-    if (house === 'Gryffindor') {
-        flashBackground('#740001'); // Scarlet
-        houseName.style.color = '#FFD700'; // Gold
-    } else if (house === 'Slytherin') {
-        flashBackground('#1A472A'); // Emerald Green
-        houseName.style.color = '#AAAAAA'; // Silver
-    } else if (house === 'Ravenclaw') {
-        flashBackground('#0E1A40'); // Midnight Blue
-        houseName.style.color = '#946B2D'; // Bronze
-    } else if (house === 'Hufflepuff') {
-        flashBackground('#EEB011'); // Yellow
-        houseName.style.color = '#000000'; // Black
+    question.options.forEach(({ label, house }) => {
+        const button = document.createElement('button');
+        button.className = 'magic-btn';
+        button.type = 'button';
+        button.innerText = label;
+        button.addEventListener('click', () => answerQuestion(house));
+        optionsContainer.appendChild(button);
+    });
+}
+
+function answerQuestion(house) {
+    if (!houseScores.hasOwnProperty(house)) {
+        console.warn('Unknown house selected:', house);
+        return;
+    }
+
+    houseScores[house] += 1;
+    currentQuestionIndex += 1;
+
+    if (currentQuestionIndex < sortingQuestions.length) {
+        renderCurrentQuestion();
+        return;
+    }
+
+    showResult();
+}
+
+function showResult() {
+    const quizQuestion = document.getElementById('quizQuestion');
+    const questionPrompt = document.getElementById('questionPrompt');
+    const optionsContainer = document.getElementById('optionsContainer');
+    const progressText = document.getElementById('progressText');
+    const resultDisplay = document.getElementById('resultDisplay');
+    const houseName = document.getElementById('houseName');
+    const houseDescription = document.getElementById('houseDescription');
+
+    const sorted = Object.entries(houseScores)
+        .sort(([, aScore], [, bScore]) => bScore - aScore);
+    const [topHouse] = sorted[0];
+
+    quizQuestion.innerText = 'The Sorting Hat is ready...';
+    questionPrompt.innerText = 'Your house has been chosen.';
+    optionsContainer.innerHTML = '';
+    progressText.innerText = '';
+
+    if (houseName && houseDescription && resultDisplay) {
+        houseName.innerText = topHouse;
+        houseDescription.innerText = houseDescriptions[topHouse] || '';
+        houseName.style.color = '';
+        resultDisplay.style.display = 'block';
+    }
+
+    if (topHouse === 'Gryffindor') {
+        flashBackground('#740001');
+        houseName.style.color = '#FFD700';
+    } else if (topHouse === 'Slytherin') {
+        flashBackground('#1A472A');
+        houseName.style.color = '#AAAAAA';
+    } else if (topHouse === 'Ravenclaw') {
+        flashBackground('#0E1A40');
+        houseName.style.color = '#946B2D';
+    } else if (topHouse === 'Hufflepuff') {
+        flashBackground('#EEB011');
+        houseName.style.color = '#000000';
     }
 }
 
+function resetSortingQuiz() {
+    currentQuestionIndex = 0;
+    houseScores = {
+        Gryffindor: 0,
+        Slytherin: 0,
+        Ravenclaw: 0,
+        Hufflepuff: 0
+    };
+    renderCurrentQuestion();
+}
+
 function flashBackground(color) {
-    const originalBg = document.body.style.backgroundColor;
+    const computed = window.getComputedStyle(document.body);
+    const originalBgColor = computed.backgroundColor;
+    const originalBgImage = computed.backgroundImage;
+
     document.body.style.transition = "background-color 0.5s ease";
     document.body.style.backgroundColor = color;
+    document.body.style.backgroundImage = originalBgImage;
     
-    // Smoothly blend back to your original website theme color after 2 seconds
     setTimeout(() => {
-        document.body.style.backgroundColor = originalBg;
+        document.body.style.backgroundColor = originalBgColor;
+        document.body.style.backgroundImage = originalBgImage;
     }, 2000);
 }
 

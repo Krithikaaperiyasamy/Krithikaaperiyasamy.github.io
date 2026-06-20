@@ -1,16 +1,15 @@
 <div class="sorting-hat-box">
     <h2 id="quizQuestion">🔮 The Sorting Hat Awaits...</h2>
-    <p>Which defining house trait resonates deepest with your magical soul?</p>
-    
-    <div id="optionsContainer" style="display: flex; flex-direction: column; gap: 10px; margin-top: 15px;">
-        <button class="magic-btn" onclick="answerQuestion('Gryffindor')" style="cursor:pointer; padding: 10px;">🦁 Bravery & Daring</button>
-        <button class="magic-btn" onclick="answerQuestion('Slytherin')" style="cursor:pointer; padding: 10px;">🐍 Ambition & Cunning</button>
-        <button class="magic-btn" onclick="answerQuestion('Ravenclaw')" style="cursor:pointer; padding: 10px;">🦅 Wit & Learning</button>
-        <button class="magic-btn" onclick="answerQuestion('Hufflepuff')" style="cursor:pointer; padding: 10px;">🦡 Patience & Loyalty</button>
-    </div>
+    <p id="questionPrompt">Answer a few questions and discover the house that fits your magic.</p>
 
-    <div id="resultDisplay" style="display: none; margin-top: 20px; font-weight: bold; font-size: 1.5rem;">
-        ⚡ Better be... <span id="houseName"></span>!
+    <div id="optionsContainer" class="quiz-options"></div>
+    <div id="progressText" class="quiz-progress">Question 1 of 3</div>
+
+    <div id="resultDisplay" class="result-panel" style="display: none;">
+        <div class="result-title">⚡ The Sorting Hat says...</div>
+        <div class="result-house"><span id="houseName"></span>!</div>
+        <div id="houseDescription" class="house-description"></div>
+        <button class="magic-btn reset-btn" onclick="resetSortingQuiz()">Try Again</button>
     </div>
 </div>
 

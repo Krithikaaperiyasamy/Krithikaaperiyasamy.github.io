@@ -4,11 +4,11 @@ A small static webpage project.
 
 ## Files
 - `index.html`: main site
-- `play.html`: demo/experimental page
+- `sorting.html`: sorting hat widget fragment
 - `readme.md`: this file
 
 ## Navigation
-- Games - Memory Game and other games
+- Sorting Hat demo and other magical experiences
 - Blog - Links to https://krithikaa.btw.so/
 
 ## Usage

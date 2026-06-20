@@ -147,6 +147,78 @@ label {
     box-shadow: 0 0 15px var(--glow-color);
 }
 
+.magic-btn {
+    background: rgba(207, 168, 81, 0.12);
+    color: var(--text-main);
+    border: 1px solid rgba(207, 168, 81, 0.25);
+    border-radius: 8px;
+    padding: 12px 18px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.magic-btn:hover,
+.magic-btn:focus {
+    background: rgba(207, 168, 81, 0.18);
+    border-color: var(--accent-gold);
+    transform: translateY(-1px);
+}
+
+.sorting-hat-box {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.quiz-options {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-top: 18px;
+}
+
+.quiz-progress {
+    margin-top: 16px;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.result-panel {
+    margin-top: 24px;
+    padding: 24px;
+    border: 1px solid rgba(207, 168, 81, 0.22);
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.result-title {
+    font-size: 1rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    color: var(--accent-gold);
+}
+
+.result-house {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.house-description {
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 18px;
+}
+
+.reset-btn {
+    width: 100%;
+}
+
 .player-container {
     margin-top: 30px;
     display: none;
