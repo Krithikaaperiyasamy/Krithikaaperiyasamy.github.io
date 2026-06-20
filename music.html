@@ -1,25 +1,23 @@
 <div class="mood-section">
     <label for="moodSelect">Select your current Wizarding Mindset</label>
-    <select id="moodSelect" class="magic-select" onchange="summonSong()">
+    <select id="moodSelect" class="magic-select">
         <option value="" disabled selected>— Choose an Aura —</option>
-        <option value="studying">Studying in the Ravenclaw Tower (Focus)</option>
-        <option value="melancholy">Rainy Day in the Forbidden Forest (Moody)</option>
-        <option value="mysterious">Sneaking into the Restricted Section (Intense)</option>
-        <option value="cozy">Warm Butterbeer by the Common Room Fire (Chill)</option>
+        <option value="focus">Studying in the Ravenclaw Tower (Focus)</option>
+        <option value="moody">Rainy Day in the Forbidden Forest (Moody)</option>
+        <option value="intense">Sneaking into the Restricted Section (Intense)</option>
+        <option value="chill">Warm Butterbeer by the Common Room Fire (Chill)</option>
     </select>
 </div>
 
 <div class="player-container" id="playerContainer">
     <div class="player-title" id="spellCast"></div>
-   <!-- Replace your old iframe line inside music.html with this exact one: -->
-<iframe 
-    id="musicFrame" 
-    width="100%" 
-    height="152" 
-    frameBorder="0" 
-    allowfullscreen="" 
-    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-    loading="lazy">
-</iframe>
-
+    <iframe 
+        id="musicFrame" 
+        width="100%" 
+        height="152" 
+        frameBorder="0" 
+        allowfullscreen="" 
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+        loading="lazy">
+    </iframe>
 </div>
