@@ -188,11 +188,10 @@ async function loadSortingWidget() {
                 return;
             }
             
-            // Ensure the result screen stays hidden on first load
-            const resultDisplay = document.getElementById('resultDisplay') || document.getElementById('resultdisplay');
-            if (resultDisplay) {
-                resultDisplay.style.display = 'none';
-            }
+            // Initialize the quiz with the first question
+            setTimeout(() => {
+                renderCurrentQuestion();
+            }, 50);
 
         } else {
             console.error('Failed to load sorting hat widget architecture. Server status:', response.status);
