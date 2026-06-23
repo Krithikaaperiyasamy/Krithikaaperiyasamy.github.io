@@ -183,15 +183,15 @@ async function loadSortingWidget() {
             const container = document.getElementById('music-widget-container');
             if (container) {
                 container.innerHTML = htmlContent;
+                
+                // Initialize the quiz with the first question
+                setTimeout(() => {
+                    renderCurrentQuestion();
+                }, 100);
             } else {
                 console.error("Target container 'music-widget-container' not found in index.html");
                 return;
             }
-            
-            // Initialize the quiz with the first question
-            setTimeout(() => {
-                renderCurrentQuestion();
-            }, 50);
 
         } else {
             console.error('Failed to load sorting hat widget architecture. Server status:', response.status);
@@ -201,6 +201,10 @@ async function loadSortingWidget() {
     }
 }
 
-// Fire off layout loading immediately on startup
-loadSortingWidget();
+// Initialize on DOM ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', loadSortingWidget);
+} else {
+    loadSortingWidget();
+}
 
