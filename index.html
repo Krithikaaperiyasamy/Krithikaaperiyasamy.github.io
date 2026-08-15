@@ -1,20 +1,150 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Krithikaa</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Krithikaa P, second year CSE student. Portfolio showcasing projects in ML, web and craft." />
+  <title>Krithikaa P Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Permanent+Marker&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="background-shapes"></div>
-    <main class="page-content">
-        <div class="content-wrap">
-            <h1 class="name">Krithikaa</h1>
-            <a class="project-link" href="https://weather-frontend-86139288264.us-central1.run.app/" target="_blank" rel="noopener noreferrer">
-                Open Rain Prediction App
-            </a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <h1 class="brand">Krithikaa P</h1>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
+      <nav class="nav" id="main-nav">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="background-shapes" aria-hidden="true"></div>
+    <section class="hero gray-bg">
+      <div class="container hero-inner">
+        <div class="hero-text">
+          <h2>Hi — I'm Krithikaa P, a second-year Computer Science student.</h2>
+          <p>I build web tools and experiment with machine learning. I work primarily with Python and JavaScript, and I balance coding with hands-on art & craft. Below are select projects and notes from my learning journey.</p>
+          <div class="hero-cta">
+            <a class="btn" href="#projects">Explore projects</a>
+            <a class="btn ghost" href="#contact">Get in touch</a>
+          </div>
         </div>
-    </main>
+        <div class="hero-card">
+          <img src="assets/krithikaa%20profile%20photo.jpeg" alt="Krithikaa" class="avatar-img">
+          <p class="small">Second-year CSE • web · ML · art & craft</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="container about">
+      <h3>About me</h3>
+      <p>I'm a second year Computer Science student learning software development and introductory machine learning. I build small projects to practice data cleaning, model prototyping, and web deployment. My interests include frontend development, data workflows, and creative hands on projects that help me think differently about technical problems. I document my work so I can iterate and share what I learn.</p>
+    </section>
+
+    <section id="skills" class="container skills">
+      <h3>Skills</h3>
+      <ul class="skill-list">
+        <li>Python-scripting, data preprocessing (learning)</li>
+        <li>C-fundamentals from coursework</li>
+        <li>Web, HTML, CSS, JavaScript; responsive layouts</li>
+        <li>Simple web demos and student projects</li>
+        <li>Machine learning- introductory model experimentation</li>
+        <li>Art & craft, practical, creative problem solving</li>
+      </ul>
+    </section>
+
+    <section id="projects" class="container projects">
+      <h3>Projects</h3>
+      <div class="project-grid">
+        <article class="project fade-up">
+          <h4>Rain Prediction App</h4>
+          <p class="meta">Tags: Machine Learning • Python • web demo</p>
+          <div class="tech-badges">
+            <span class="badge">Python</span>
+            <span class="badge">scikit-learn</span>
+            <span class="badge">JavaScript</span>
+          </div>
+          <p>A student project that estimates the likelihood of rain from basic weather features. The work includes data cleaning, simple feature engineering, model prototyping, and a lightweight web demo to explore results.</p>
+          <p>Notes on data and modeling decisions are included to help me revisit the project and continue improving it over time.</p>
+          <p class="excerpt small">Excerpt: I trained XGBoost and Random Forest models, built a FastAPI relay backend with a React frontend, and deployed the app to Vertex AI, gaining practical experience in model deployment, debugging, and cloud workflows.</p>
+          <p class="small" style="margin-top:.6rem;color:var(--muted)">Last updated: 2026</p>
+          <div class="project-links">
+            <a class="btn small" href="https://weather-frontend-86139288264.us-central1.run.app/" target="_blank" rel="noopener">Open project</a>
+            <a class="btn small ghost" href="https://medium.com/@2007krithikaa/internship-b7a237f7e3df?sharedUserId=2007krithikaa" target="_blank" rel="noopener">Read my notes</a>
+          </div>
+        </article>
+
+        <article class="project">
+          <h4>Personal Website (this page)</h4>
+          <p>Handmade, gray tone minimalist portfolio to share projects and contact info.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="contact" class="container contact">
+      <h3>Contact</h3>
+      <div class="contact-inner">
+        <div class="contact-line">Email: <a href="mailto:2007krithikaa@gmail.com">2007krithikaa@gmail.com</a></div>
+        <div class="contact-line">LinkedIn:
+          <a class="linkedin-link" href="https://www.linkedin.com/in/krithikaa-periyasamy-a7034a37a/" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg class="linkedin-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="20" height="20" rx="3" stroke="currentColor" stroke-width="1.2" fill="none"/><path d="M6.5 9.5V17" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M6.5 7.5C6.5 7.5 6.5 6.5 7.5 6.5C8.5 6.5 9 7.5 9 8.25C9 9 8.5 9.5 7.5 9.5C6.5 9.5 6.5 7.5 6.5 7.5Z" stroke="currentColor" stroke-width="1.2" fill="currentColor"/><path d="M11 12.5V17" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M11 9.5V10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M16.5 12.5V17" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M16.5 10.5C16 10 15 9.5 13.8 9.5C12.2 9.5 11.8 10.8 11.8 12V17" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span class="sr-only">LinkedIn</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer gray-bg">
+    <div class="container footer-inner">
+      <p class="foot-note">Designed and implemented by Krithikaa P, second-year CSE student.</p>
+    </div>
+  </footer>
+
+  <script>
+    // small script to reveal animated elements on load/scroll
+    function reveal() {
+      document.querySelectorAll('.fade-up').forEach(el=>{
+        const rect = el.getBoundingClientRect();
+        if(rect.top < (window.innerHeight || document.documentElement.clientHeight) - 40){
+          el.classList.add('visible');
+        }
+      });
+    }
+    window.addEventListener('load', reveal);
+    window.addEventListener('scroll', reveal);
+
+    // mobile nav toggle & smooth scroll
+    (function(){
+      const btn = document.querySelector('.nav-toggle');
+      const nav = document.getElementById('main-nav');
+      btn.addEventListener('click', ()=>{
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', String(!expanded));
+        nav.classList.toggle('show');
+      });
+
+      // smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(a=>{
+        a.addEventListener('click', function(e){
+          const href = this.getAttribute('href');
+          if(href.length>1){
+            e.preventDefault();
+            document.querySelector(href).scrollIntoView({behavior:'smooth',block:'start'});
+            // close nav on mobile
+            if(nav.classList.contains('show')){nav.classList.remove('show');btn.setAttribute('aria-expanded','false')}
+          }
+        })
+      });
+    })();
+  </script>
 </body>
 </html>
+
