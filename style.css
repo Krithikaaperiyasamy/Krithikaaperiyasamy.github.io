@@ -39,8 +39,9 @@ body::before{
   content:"";
   position:fixed;
   inset:0;
-  /* background image (if present) first, then textured gradient fallback */
-  background-image: url('assets/background.jpg'), radial-gradient(1200px 600px at 10% 10%, rgba(0,0,0,0.04), transparent 20%), radial-gradient(900px 400px at 90% 80%, rgba(0,0,0,0.03), transparent 20%), linear-gradient(180deg, rgba(245,245,246,0.95), rgba(232,232,232,0.95));
+    /* background image (if present) first, then textured gradient fallback.
+      Try both jpeg and jpg filenames so local uploads with either extension work. */
+    background-image: url('assets/background.jpeg'), url('assets/background.jpg'), radial-gradient(1200px 600px at 10% 10%, rgba(0,0,0,0.04), transparent 20%), radial-gradient(900px 400px at 90% 80%, rgba(0,0,0,0.03), transparent 20%), linear-gradient(180deg, rgba(245,245,246,0.95), rgba(232,232,232,0.95));
   background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
   background-size: cover, auto, auto, cover;
   background-position: center center, left 10% top 10%, right 90% bottom 80%, center center;
