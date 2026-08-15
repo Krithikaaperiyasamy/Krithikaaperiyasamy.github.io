@@ -100,15 +100,6 @@ body::after {
     letter-spacing: -0.05em;
 }
 
-.projects-heading {
-    margin: 0;
-    font-size: 1.3rem;
-    font-weight: 600;
-    color: rgba(248, 249, 255, 0.9);
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-}
-
 .project-link {
     display: inline-block;
     padding: 12px 20px;
@@ -137,10 +128,6 @@ body::after {
 @media (max-width: 600px) {
     .name {
         font-size: clamp(3rem, 12vw, 4.5rem);
-    }
-
-    .projects-heading {
-        font-size: 1.05rem;
     }
 
     .project-link {
